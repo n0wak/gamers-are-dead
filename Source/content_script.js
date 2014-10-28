@@ -1,11 +1,15 @@
-walk(document.body);
+var hobbyAsIdentity = ["Televisioner", "Movier", "Sportser", "Booker", "Musicer", "Drawer", "Fooder", "Exerciser", "Shopper", "Relaxer", "Crafter", "Dancer", "Theaterer", "Drinker", "Knitter", "Websurfer", "Trainspotter"];
+var thisHobby = hobbyAsIdentity[Math.floor(Math.random()*hobbyAsIdentity.length)];
 
-function walk(node) 
+walk(document.body, thisHobby);
+
+function walk(node, thisHobby) 
 {
 	// I stole this function from here:
 	// http://is.gd/mwZp7E
 	
 	var child, next;
+
 
 	switch ( node.nodeType )  
 	{
@@ -16,26 +20,26 @@ function walk(node)
 			while ( child ) 
 			{
 				next = child.nextSibling;
-				walk(child);
+				walk(child, thisHobby);
 				child = next;
 			}
 			break;
 
 		case 3: // Text node
             if(node.parentElement.tagName.toLowerCase() != "script") {
-                handleText(node);
+                handleText(node, thisHobby);
             }
 			break;
 	}
 }
 
-function handleText(textNode) {
+function handleText(textNode, thisHobby) {
     var v = textNode.nodeValue;
-    var hobbyAsIdentity = ["Televisioner", "Movier", "Sportser", "Booker", "Musicer", "Drawer", "Fooder", "Exerciser", "Shopper", "Relaxer", "Crafter", "Dancer", "Theatreer", "Drinker", "Genealogier", "Knitter", "Websurfer", "Trainspotter"];
-    var thisHobby = hobbyAsIdenty[Math.floor(Math.random()*hobbyAsIdenty.length)];
-    v = v.replace(/\bGamer\b/g, thisHobby);
-    v = v.replace(/\bgamer\b/g, thisHobby.toLowerCase());
-    textNode.nodeValue = v;
+    if (v.length > 5) {
+        v = v.replace(/Gamer/g, thisHobby);
+        v = v.replace(/gamer/g, thisHobby.toLowerCase());
+        textNode.nodeValue = v;
+    }
 }
 
 

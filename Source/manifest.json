@@ -1,5 +1,5 @@
 {
-	"manifest_version": 1,
+	"manifest_version": 2,
 	"name": "GamersAreDead",
 	"version": "1.0",
 	"description": "Replaces 'gamer' with another hobby because connecting your hobby to your identity is dumb.",
